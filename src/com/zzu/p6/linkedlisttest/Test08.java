@@ -16,8 +16,7 @@ public class Test08 {
         Node node2 = new Node("22",node3);
         Node headNode = new Node("11",node2);
         lastNode.setNext(node4);
-        Node meetNode = getMeetNode(headNode);
-        System.out.println(ringNum(meetNode));
+        System.out.println(ringLength(headNode));
     }
 
     /**
@@ -45,18 +44,23 @@ public class Test08 {
 
     /**
      * 从快慢指针相交的节点开始遍历，查找环中节点个数
-     * @param meetNode
+     * @param headNode
      * @return
      */
-    public static int ringNum(Node meetNode){
-        int size = 1 ;
-        Node temp = meetNode.getNext();
-        while(temp != meetNode){
-            temp = temp.getNext();
-            size++;
-
+    public static int ringLength(Node headNode){
+        Node meetNode = getMeetNode(headNode);
+        if(meetNode == null){
+            return 0;
         }
-        return size;
+        int length = 0;
+        Node temp = meetNode;
+        while (true){
+            temp = temp.getNext();
+            length++;
+            if(temp==meetNode){
+                break;
+            }
+        }
+        return length;
     }
-
 }
