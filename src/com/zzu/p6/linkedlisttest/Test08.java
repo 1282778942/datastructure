@@ -54,9 +54,7 @@ public class Test08 {
         while(temp != meetNode){
             temp = temp.getNext();
             size++;
-
         }
         return size;
     }
-
 }
